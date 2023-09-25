@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Prep3 World!");
+        
         int eesCorrect = 0;
         Random randomGenerator = new Random();
         int eesMagicNumber = randomGenerator.Next(1,11);
