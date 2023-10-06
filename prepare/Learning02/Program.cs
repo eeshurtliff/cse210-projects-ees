@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning02 World!");
+        
         EesJob job1 = new EesJob();
         job1._eesCompany = "Microsoft";
         job1._eesJobTitle = "Software Engineer";
