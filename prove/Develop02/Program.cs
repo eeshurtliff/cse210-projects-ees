@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.Contracts;
+using System.IO;
 
 
 class Program
@@ -15,8 +16,6 @@ class Program
                 int eesPromptNumber = eesEntry1.EesChoosePrompt();
                 eesEntry1._eesPrompt = eesEntry1.EesPrompts[eesPromptNumber];
                 
-                
-
                 eesEntry1.EesFormatEntry();
                 eesMyJournal._eesEntry.Add(eesEntry1);
 
@@ -28,6 +27,7 @@ class Program
             else if (eesChoice == 3){
                 Console.WriteLine("Which file would you like to save your Journal to? ");
                 string eesUserFile = Console.ReadLine();
+                EesSaveFile(eesUserFile, eesMyJournal);
             }
             else if (eesChoice == 4){
                 Console.Write(eesMyJournal.FormatJournal());
@@ -54,21 +54,9 @@ class Program
     }
 
     static void EesSaveFile(string fileName, EesJournal eesMyJournal){
-        //Saving Console output to file
-            // Console.WriteLine("Please Enter File Name: ");
-            // string eesfileName = Console.ReadLine();
 
-            // string filePath = @"C:\Desktop\Log.txt";
-            
-            // FileStream filestream = new FileStream(filePath, FileMode.Create);
-            // var streamwriter = new StreamWriter(filestream);
-            // streamwriter.AutoFlush = true;
-            // Console.SetOut(streamwriter);
-            // Console.SetError(streamwriter);
-
-
-        using (StreamWriter writer = new StreamWriter(fileName)){
-            writer.Write(eesMyJournal);
+        using (StreamWriter writer = new StreamWriter(fileName, true)){
+            writer.Write(eesMyJournal.FormatJournal());
         }
     }
 

@@ -18,6 +18,7 @@ public class EesJournal{
         foreach (EesEntry eesSingleEntry in _eesEntry){
             fullJournal = $"{fullJournal} \n {eesSingleEntry.EesCompleteEntry()}";
         }
+            fullJournal = $"{fullJournal} \n";
             return fullJournal;
 
 
