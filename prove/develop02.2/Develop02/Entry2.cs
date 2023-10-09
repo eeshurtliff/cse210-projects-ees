@@ -18,11 +18,12 @@ public class EesEntry{
 
     public string _eesPrompt;
     
-    public void CreatePrompt(){
+    public int EesChoosePrompt(){
         Random eesRandomGenerator = new Random();
-        int eesRandomNumber = eesRandomGenerator.Next(0,4);
+        int eesRandomNumber = eesRandomGenerator.Next(0,5);
+        return eesRandomNumber;
 
-        _eesPrompt = EesPrompts[eesRandomNumber];
+        // _eesPrompt = EesPrompts[eesRandomNumber];
     }
     
 
@@ -35,6 +36,13 @@ public class EesEntry{
     public void EesDisplayCompleteEntry(){
         Console.WriteLine($"Date: {_eesDate} - Prompt: {_eesPrompt}");
         Console.WriteLine($"> {_eesText}");
+        
+
+    }
+
+     public string EesCompleteEntry(){
+        string fullEntry = $"Date: {_eesDate} - Prompt: {_eesPrompt} \n > {_eesText}";
+        return fullEntry;
         
 
     }

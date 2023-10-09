@@ -8,3 +8,8 @@
  > happy 
  Date: 10/05/2023 - Prompt: What was the best part of my day?  
  > reading Harry Potter book 3 
+ 
+ Date: 10/05/2023 - Prompt: What was the best part of my day?  
+ > hello 
+ Date: 10/05/2023 - Prompt: If I had one thing I could do over today, what would it be?  
+ > working earlier 
