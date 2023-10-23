@@ -43,6 +43,5 @@ class Program {
         }while (khMainMemorizer.IsDone() == false);
         Console.WriteLine("You have Finished! ");
 
-        // Pass information to finished Memorizer class method here.
     }
 }
