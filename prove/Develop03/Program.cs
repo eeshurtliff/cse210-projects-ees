@@ -13,21 +13,20 @@ class Program {
         string khReference = Console.ReadLine();
 
       
-        
-        // Pass information to finished reference class method here.
 
         // Asking user for the scriptire passage.
         Console.Write("Enter the scripture passage (ex. 'And my father dwelt in a tent.'): ");
         string khPassage = Console.ReadLine();
 
         
-        // Pass information to finished scripture class method here.
+       
 
         // Ask the user for the number of words hidden each time they press enter.
         Console.Write("Specify the hidden word count for each memorization round. (ex. '3'): ");
         string khHiddenWordCount = Console.ReadLine();
         int khNumberHiddenWords = int.Parse(khHiddenWordCount);
 
+        // Pass information to finished Memorizer class method here.
         Memorizer khMainMemorizer = new Memorizer(khReference, khPassage, khNumberHiddenWords);
         Console.WriteLine(khMainMemorizer.ToString());
 
