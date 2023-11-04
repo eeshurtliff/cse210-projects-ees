@@ -1,5 +1,11 @@
 class ReflectionActivity : Activity{
-    private List<string> _eesQuestions;
+    private List<string> _eesQuestions = new List<string>{
+        "Why was this experience meaningful to you?",
+        "Have you ever done anything like this before?",
+        "How did you get started?",
+        "How did you feel when it was complete?",
+        ""
+    };
     private int _eesTimePerQuestion;
 
 
@@ -7,4 +13,7 @@ class ReflectionActivity : Activity{
         _eesTimePerQuestion = eesTimePerQuestion;
     }
 
+    public void EesSpecificActivity(){
+        int eesRandom = base.EesReturnRandomNumber(_eesQuestions);
+    }
 }
