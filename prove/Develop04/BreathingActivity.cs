@@ -28,21 +28,27 @@ class BreathingActivity : Activity{
 
     }
 
-    private void CreateCountdown(){
-        for (int i = _eesPause; i > 0; i--){
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-        
+    
+
+   
+
+    public void EesRunActivity(){
+
+        base.EesStartingMessage();
+        DateTime eesStartActivity = DateTime.Now;
+        DateTime eesEndTime = eesStartActivity.AddSeconds(_eesDuration);
+
+        while(DateTime.Now < eesEndTime){
+            Console.Write(_eesBreatheIn);
+            EesCreateCountdown(_eesPause);
+            Console.Write(_eesBreatheOut);
+            EesCreateCountdown(_eesPause);  
+            
         }
-    }
 
-    public void EesSpecificActivity(){
-        Console.Write(_eesBreatheIn);
-        CreateCountdown();
-        Console.Write(_eesBreatheOut);
-        CreateCountdown();
-
-    }
+        base.EesEndingMessage();
+        Thread.Sleep(2000);
+        Console.Clear();
+    } 
 
 }

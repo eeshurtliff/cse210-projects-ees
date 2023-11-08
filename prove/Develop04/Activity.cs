@@ -21,7 +21,7 @@ class Activity{
         _eesDescription = eesDescription;
         _eesPrompts = eesPrompts;
     }
-    private void EesCreateAnimation(int time){
+    protected void EesCreateAnimation(int time){
         DateTime eesStartTime = DateTime.Now;
         DateTime eesEndTime = eesStartTime.AddSeconds(time);
         int i = 0;
@@ -33,6 +33,10 @@ class Activity{
 
             i++;
 
+            if (i > _eesAnimationItems.Count()){
+                i = 0;
+            }
+
 
         }
         // foreach (string item in _eesAnimationItems){
@@ -43,12 +47,21 @@ class Activity{
         // }
     }
 
+    protected void EesCreateCountdown(int eesNumber){
+        for (int i = eesNumber; i > 0; i--){
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        
+        }
+    }
+
     protected int EesReturnRandomNumber(List<string> eesList){
         Random eesGenerator = new Random();
         int eesNumber = eesGenerator.Next(0, eesList.Count());
         return eesNumber;
     }
-    public void EesStartingMessage(){
+    protected void EesStartingMessage(){
         Console.WriteLine($" Welcome to the{_eesName}. "); 
         Console.WriteLine();
         Console.WriteLine($"{_eesDescription} ");
@@ -68,7 +81,7 @@ class Activity{
         Thread.Sleep(2000);
     }
 
-    public void EesEndingMessage(){
+    protected void EesEndingMessage(){
         Console.WriteLine("Well done!");
         Console.WriteLine();
         Thread.Sleep(2000);
@@ -78,28 +91,28 @@ class Activity{
     }          
 
 
-    public void RunActivity(int smallTime){
+    // public void RunActivity(){
 
-        EesStartingMessage();
-        DateTime eesStartActivity = DateTime.Now;
-        DateTime eesEndTime = eesStartActivity.AddSeconds(_eesDuration);
-        if (_eesPrompts != null){
-            Console.WriteLine("Please read the following prompt:");
-        }
+    //     EesStartingMessage();
+    //     DateTime eesStartActivity = DateTime.Now;
+    //     DateTime eesEndTime = eesStartActivity.AddSeconds(_eesDuration);
+    //     if (_eesPrompts != null){
+    //         Console.WriteLine("Please read the following prompt:");
+    //     }
 
-        while(DateTime.Now < eesEndTime){
-            if (_eesName == "Breathing Activity"){
-                BreathingActivity.EesSpecificActivity();
-            }else if (_eesName == "Reflection Activity"){
+    //     while(DateTime.Now < eesEndTime){
+    //         if (_eesName == "Breathing Activity"){
+    //             BreathingActivity.EesSpecificActivity();
+    //         }else if (_eesName == "Reflection Activity"){
 
-            }else{
+    //         }else{
 
-            }
-        }
+    //         }
+    //     }
 
 
-        EesEndingMessage();
-    } 
+    //     EesEndingMessage();
+    // } 
 
 
 
