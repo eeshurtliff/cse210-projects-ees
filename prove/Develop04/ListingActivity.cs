@@ -21,10 +21,11 @@ class ListingActivity : Activity{
         Console.WriteLine("Please read the following prompt:");
         int eesRandomPrompt = base.EesReturnRandomNumber(_eesPrompts);
         string eesChosenPrompt = _eesPrompts[eesRandomPrompt];
-        Console.WriteLine("eesChosenPrompt");
+        Console.WriteLine($"{eesChosenPrompt}");
         Thread.Sleep(1000);
         Console.Write("You may begin in: ");
         EesCreateCountdown(5);
+        Console.WriteLine();
 
         while(DateTime.Now < eesEndTime){
             Console.Write(">");

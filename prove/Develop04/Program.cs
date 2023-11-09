@@ -6,10 +6,12 @@ class Program
     {
         Console.WriteLine("Hello Develop04 World!");
         int eesMenuChoice = 0;
+        
         while (eesMenuChoice != 4){
             eesMenuChoice = eesMenu();
             if (eesMenuChoice == 1){
                 BreathingActivity eesActivity = new BreathingActivity("Breathing Activity", "This Activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing. ");
+                eesActivity.EesRunActivity();
                 
             }
             else if (eesMenuChoice == 2){
@@ -20,7 +22,8 @@ class Program
                     "Think of a time when you helped someone in need. ",
                     "Think of a time when you did something truly selfless. "
                 };
-                ReflectionActivity eesActivity = new ReflectionActivity("Reflection Activity", eesReflectionDescription, eesReflectionPrompts, 4 );
+                ReflectionActivity eesActivity = new ReflectionActivity("Reflection Activity", eesReflectionDescription, eesReflectionPrompts, 8 );
+                eesActivity.EesRunActivity();
             }
             else if (eesMenuChoice == 3){
                 string eesListingDescription = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area. ";
@@ -32,6 +35,7 @@ class Program
                     "Who are some of your personal heroes? "
                 };
                 ListingActivity eesActivity = new ListingActivity("Listing Activity", eesListingDescription, eesListingPrompts);
+                eesActivity.EesRunActivity();
             }
             else if (eesMenuChoice == 4){
                 Console.WriteLine("Thank you for participating in the mindfulness activities! ");
@@ -40,7 +44,6 @@ class Program
             else{
                 Console.WriteLine("That was not a menu option. Please select a number from the menu. ");
             }
-            eesActivity.EesRunActivity();
         }
     }
 

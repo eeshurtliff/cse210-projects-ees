@@ -28,12 +28,12 @@ class Activity{
         while (DateTime.Now < eesEndTime){
             string s = _eesAnimationItems[i];
             Console.Write(s);
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write("\b \b");
 
             i++;
 
-            if (i > _eesAnimationItems.Count()){
+            if (i == _eesAnimationItems.Count()){
                 i = 0;
             }
 
@@ -76,9 +76,10 @@ class Activity{
         Console.WriteLine($"Your activity will last for {_eesDuration} seconds.");
         Console.WriteLine();
         Thread.Sleep(2000);
-        Console.WriteLine("Get ready...");
+        Console.Write("Get ready...");
+        EesCreateAnimation(5);
         Console.WriteLine();
-        Thread.Sleep(2000);
+        // Thread.Sleep(2000);
     }
 
     protected void EesEndingMessage(){

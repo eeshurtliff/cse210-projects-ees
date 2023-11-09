@@ -24,29 +24,30 @@ class ReflectionActivity : Activity{
     public void EesRunActivity(){
 
         base.EesStartingMessage();
-        DateTime eesStartActivity = DateTime.Now;
-        DateTime eesEndTime = eesStartActivity.AddSeconds(_eesDuration);
         
         Console.WriteLine("Please read the following prompt:");
         int eesRandomPrompt = base.EesReturnRandomNumber(_eesPrompts);
         string eesChosenPrompt = _eesPrompts[eesRandomPrompt];
-        Console.WriteLine("eesChosenPrompt");
-        Console.Write("Press \"e\" to continue.");
+        Console.WriteLine($"{eesChosenPrompt}");
+        Console.Write("Press enter to continue.");
         Console.ReadLine();
         Console.Clear();
 
-        int eesRandom = base.EesReturnRandomNumber(_eesQuestions);
-        string eesChosenQuestion = _eesQuestions[eesRandom];
         Console.WriteLine("Now ponder on each of the following questions as they are related to this experience.");
         Thread.Sleep(2000);
         Console.Write("You may begin in: ");
         EesCreateCountdown(5);
+        DateTime eesStartActivity = DateTime.Now;
+        DateTime eesEndTime = eesStartActivity.AddSeconds(_eesDuration);
         Console.Clear();
 
         while(DateTime.Now < eesEndTime){
         
+            int eesRandom = base.EesReturnRandomNumber(_eesQuestions);
+            string eesChosenQuestion = _eesQuestions[eesRandom];
             Console.Write($"--- {eesChosenQuestion} ---");
             base.EesCreateAnimation(_eesTimePerQuestion);
+            Console.WriteLine();
         }
 
 
