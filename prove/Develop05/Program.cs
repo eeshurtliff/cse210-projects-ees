@@ -319,10 +319,7 @@ class Program {
                 if (spGoalChoice >= 1 && spGoalChoice <= spGoalList.Count){
     
                     Goal spChosenGoal = spGoalList[spGoalChoice -1];
-                    // string spChosenGoalString = spGoalList[spGoalChoice].ToString();
-                    // string[] spGoalSplit = spChosenGoalString.Split(":");
-                    // string[] spGoalDetails = spGoalSplit[1].Split(",");
-                    // string spGoalType = spGoalSplit[0];
+                    
 
                     spChosenGoal.SpRecordEvent();
                     spGoalsheet.SpGetScore();
