@@ -5,9 +5,7 @@ class Program
 
 
     static int EesMenu(){
-        bool gotResponse = false;
-        int eesResponseNumber;
-        do{
+            Console.WriteLine("Choose an option from the menu: ");
             Console.WriteLine("1. Load the Planner");
             Console.WriteLine("2. Save the Planner");
             Console.WriteLine("3. Add a new event");
@@ -15,19 +13,60 @@ class Program
             Console.WriteLine("5. Update an event");
             Console.WriteLine("6. Exit");
             Console.WriteLine();
-            Console.Write("Please enter the number of the option you chose: ");
+            Console.WriteLine("Please enter the number of the option you chose: ");
+            return EesGetOptionChoice(6);
+        
+    }
+
+    static int EesGetOptionChoice(int eesHighRange){
+        bool eesGotResponse = false;
+        int eesResponseNumber;
+        do{
+            Console.Write("> ");
             string eesUserResponse = Console.ReadLine();
-            if (int.TryParse(eesUserResponse, out eesResponseNumber)){
-                if (eesResponseNumber >= 1 && eesResponseNumber <= 6){
-                    gotResponse = true;
+        if (int.TryParse(eesUserResponse, out eesResponseNumber)){
+             if (eesResponseNumber >= 1 && eesResponseNumber <= eesHighRange){
+                    eesGotResponse = true;
                 }else{
-                    Console.WriteLine("That number is not an option. Please try again. ");
+                    Console.WriteLine($"That number is not in the range 1-{eesHighRange}. Please try again. ");
                 }
             }else{
                 Console.WriteLine("That is not a number. Please try again. ");
             }
-        }while (gotResponse == false);
+        }while (eesGotResponse == false);
         return eesResponseNumber;
+
+    }
+    
+
+
+
+    static void EesCreateEvent(){
+        Console.WriteLine("Choose an event to create: ");
+        Console.WriteLine("1. Appointment: an event that is scheduled to happen at a specific time. ");
+        Console.WriteLine("2. Task: an event that has a date it must be completed by. ");
+        Console.WriteLine("Which event would you like to create? ");
+        int eesChoice = EesGetOptionChoice(2);
+        Console.WriteLine();
+
+        if (eesChoice == 1){
+
+        }else{
+            Console.WriteLine("Choose a type of task to create: ");
+            Console.WriteLine("1. One time task");
+            Console.WriteLine("2. Repeated task: repeated weekly ");
+            Console.WriteLine("3. Complex task: made up of multiple smaller tasks ");
+            int eesTaskChoice = EesGetOptionChoice(3);
+
+            if (eesTaskChoice == 1){
+
+            }else if (eesTaskChoice == 2){
+
+            }else{
+
+            }
+        }
+        
     }
 
 
@@ -36,14 +75,20 @@ class Program
     {
         int eesUserChoice = EesMenu();
         if (eesUserChoice == 1){
+            //1. Load the Planner
 
         }else if (eesUserChoice == 2){
+            //2. Save the Planner
 
         }else if (eesUserChoice == 3){
+            //3. Add a new event
+
 
         }else if (eesUserChoice == 4){
+            //4. View Planner
 
         }else if (eesUserChoice == 5){
+            //5. Update an event
 
         }else{
             Console.WriteLine("Thank you for using this planner. Come back soon! ");

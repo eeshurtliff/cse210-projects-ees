@@ -6,7 +6,7 @@ class Appointment : Event{
     
 
 
-    public Appointment(string eesType, string eesTitle, string eesDescription, List<string> eesSupplies, bool eesIsComplete, DateTime eesStartTime, DateTime eesEndTime) : base(eesType, eesTitle, eesDescription, eesSupplies){
+    public Appointment(string eesType, string eesTitle, string eesDescription, List<string> eesSupplies, DateTime eesStartTime, DateTime eesEndTime, bool eesIsComplete) : base(eesType, eesTitle, eesDescription, eesSupplies){
         _eesStartTime = eesStartTime;
         _eesEndTime = eesEndTime;
         _eesIsComplete = eesIsComplete;
@@ -19,10 +19,17 @@ class Appointment : Event{
 
 
     public override string EesToString(){
-        return "";
+        return $"{_eesType}: {_eesTitle}, {_eesDescription}, {_eesSupplies}, {_eesStartTime}, {_eesEndTime}, {_eesIsComplete} ";
     }
 
     public string EesDisplayAppointment(){
-        return "";
+        string eesPrintedComplete;
+        if (_eesIsComplete){
+            eesPrintedComplete = "[x]";
+        }else{
+            eesPrintedComplete = "[ ]";
+        }
+        
+        return $"{eesPrintedComplete} Your \"{_eesTitle}\" {_eesType} is from {_eesStartTime} to {_eesEndTime}. ";
     }
 }
