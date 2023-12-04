@@ -3,7 +3,7 @@ using System;
 class Program
 {
 
-
+// This function displays the menu and returns the user's choice to the main function
     static int EesMenu(){
             Console.WriteLine("Choose an option from the menu: ");
             Console.WriteLine("1. Load the Planner");
@@ -18,6 +18,9 @@ class Program
         
     }
 
+
+// takes a response and continues to ask for a response until the answer is in the range required for the question. 
+// This is a separate function because it is needed multiple times in the program
     static int EesGetOptionChoice(int eesHighRange){
         bool eesGotResponse = false;
         int eesResponseNumber;
@@ -51,7 +54,7 @@ class Program
 
         if (eesChoice == 1){
 
-        }else{
+        }else{   //2
             Console.WriteLine("Choose a type of task to create: ");
             Console.WriteLine("1. One time task");
             Console.WriteLine("2. Repeated task: repeated weekly ");
@@ -62,7 +65,7 @@ class Program
 
             }else if (eesTaskChoice == 2){
 
-            }else{
+            }else{   //3
 
             }
         }
