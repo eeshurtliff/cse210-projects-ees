@@ -1,4 +1,4 @@
-class Event{
+abstract class Event{
 
     /// <summary>
     ///The Event class holds everything that Appointments and Tasks have in common
@@ -19,6 +19,10 @@ class Event{
         _eesIsComplete = eesIsComplete;
 
     }
+
+    public abstract void EesRecordEvent();
+
+    public abstract string EesToString();
 
 
 
