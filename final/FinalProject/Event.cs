@@ -7,16 +7,16 @@ abstract class Event{
     protected string _eesTitle;
     protected string _eesDescription;
     protected List<string> _eesSupplies = new List<string>();
-    protected bool _eesIsComplete;
+    
 
 
 
-    public Event(string eesType, string eesTitle, string eesDescription, List<string> eesSupplies, bool eesIsComplete){
+    public Event(string eesType, string eesTitle, string eesDescription, List<string> eesSupplies){
         _eesType = eesType;
         _eesTitle = eesTitle;
         _eesDescription = eesDescription;
         _eesSupplies = eesSupplies;
-        _eesIsComplete = eesIsComplete;
+       
 
     }
 

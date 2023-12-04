@@ -8,5 +8,17 @@ class Repeat : Task{
         _eesWeeksCompleted = eesWeeksCompleted;
     }
 
+    public override void EesRecordEvent(){
+
+    }
+
+    public override string EesToString(){
+        return "";
+    }
+
+    public override string EesDisplayTask(){
+        return "";
+    }
+
 
 }

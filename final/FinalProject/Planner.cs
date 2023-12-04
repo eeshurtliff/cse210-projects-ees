@@ -13,4 +13,9 @@ class Planner{
         _eesAppointmentList = eesAppointmentList;
         _eesTaskList = eesTaskList;
     }
+
+
+    public string EesDisplayPlanner(){
+        return "";
+    }
 }

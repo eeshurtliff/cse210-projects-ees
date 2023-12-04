@@ -18,7 +18,7 @@ class Program
             Console.Write("Please enter the number of the option you chose: ");
             string eesUserResponse = Console.ReadLine();
             if (int.TryParse(eesUserResponse, out eesResponseNumber)){
-                if (eesResponseNumber >= 1 || eesResponseNumber <= 6){
+                if (eesResponseNumber >= 1 && eesResponseNumber <= 6){
                     gotResponse = true;
                 }else{
                     Console.WriteLine("That number is not an option. Please try again. ");
