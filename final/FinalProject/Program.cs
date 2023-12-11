@@ -445,10 +445,17 @@ class Program
         if (eesUserChoice == 1){
             //1. Load the Planner
             eesSaveAndLoad.EesLoadPlanner(eesPlanner);
+            Thread.Sleep(1000);
+            Console.WriteLine("Your events have been loaded from the file. ");
+            Console.WriteLine();
+            Thread.Sleep(1000);
 
         }else if (eesUserChoice == 2){
             //2. Save the Planner
             eesSaveAndLoad.EesSaveToFile(eesPlanner);
+            Thread.Sleep(1000);
+            Console.WriteLine("Your planner has been saved. ");
+            Console.WriteLine();
             Thread.Sleep(1000);
 
         }else if (eesUserChoice == 3){
@@ -468,7 +475,7 @@ class Program
             int eesViewChoice = EesGetOptionChoice(3);
             eesDisplayEvents(eesPlanner, eesViewChoice);
             Console.WriteLine();
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
         }else if (eesUserChoice == 5){
             //5. Update an event
@@ -482,6 +489,7 @@ class Program
             int eesViewChoice = EesGetOptionChoice(3);
 
             eesDisplayEvents(eesPlanner, eesViewChoice);
+            Thread.Sleep(3000);
 
             EesUpdateEvent(eesPlanner, eesViewChoice);
 
