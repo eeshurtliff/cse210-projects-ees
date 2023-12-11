@@ -214,7 +214,6 @@ class Program
             Console.WriteLine("Choose a type of task to create: ");
             Console.WriteLine("1. One time task");
             Console.WriteLine("2. Repeated task: repeated weekly ");
-            // Console.WriteLine("3. Complex task: made up of multiple smaller tasks ");
             int eesTaskChoice = EesGetOptionChoice(2);
 
             Console.WriteLine("What day of the month is it due? (Please enter in number form)");
@@ -252,12 +251,7 @@ class Program
 
 
     static void eesDisplayEvents(Planner eesPlanner, int eesUserChoice){
-        // Console.WriteLine("Please select a choice for what you would like to view: ");
-        // Console.WriteLine("1. View entire planner ");
-        // Console.WriteLine("2. View all Appointments ");
-        // Console.WriteLine("3. View all Tasks ");
-        // Console.WriteLine("Which option would you like to choose? ");
-        // int eesUserChoice = EesGetOptionChoice(3);
+       
         if (eesUserChoice == 1){
             int eesI = 1;
             List<Event> eesFull = eesPlanner.EesGetFullList();
