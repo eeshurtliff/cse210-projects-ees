@@ -6,9 +6,18 @@ class Once : Task {
         
     }
 
+    
 
-    public override string EesDisplayTask()
+
+    public override string EesDisplayInPlanner()
     {
-        return "";
+        string eesPrintedComplete;
+        if (_eesIsComplete){
+            eesPrintedComplete = "[x]";
+        }else{
+            eesPrintedComplete = "[ ]";
+        }
+
+        return $"{eesPrintedComplete} Your \"{_eesTitle}\" {_eesType} is planned to be complete by {_eesPreferedDue} and is officially due on {_eesDueDate}. ";
     }
 }

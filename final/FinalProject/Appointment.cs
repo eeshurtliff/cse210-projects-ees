@@ -13,23 +13,31 @@ class Appointment : Event{
     }
 
 
+    public override DateTime EesGetFirstTime(){
+        return _eesStartTime;
+    }
+
+
     public override void EesRecordEvent(){
-
+        _eesIsComplete = true;
     }
 
 
-    public override string EesToString(){
-        return $"{_eesType}: {_eesTitle}, {_eesDescription}, {_eesSupplies}, {_eesStartTime}, {_eesEndTime}, {_eesIsComplete} ";
+
+
+    public override string ToString(){
+
+        return $"{_eesType}:: {_eesTitle}, {_eesDescription}, {base.EesListToString()}, {_eesStartTime}, {_eesEndTime}, {_eesIsComplete} ";
     }
 
-    public string EesDisplayAppointment(){
+    public override string EesDisplayInPlanner(){
         string eesPrintedComplete;
         if (_eesIsComplete){
             eesPrintedComplete = "[x]";
         }else{
             eesPrintedComplete = "[ ]";
         }
-        
+
         return $"{eesPrintedComplete} Your \"{_eesTitle}\" {_eesType} is from {_eesStartTime} to {_eesEndTime}. ";
     }
 }

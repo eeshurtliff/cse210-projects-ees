@@ -11,18 +11,24 @@ abstract class Task : Event{
         _eesPreferedDue = eesPreferedDue;
         _eesTaskType = eesTaskType;
         _eesIsComplete = eesIsComplete;
+
+    }
+    
+    
+    public override DateTime EesGetFirstTime(){
+        return _eesPreferedDue;
     }
 
-    public override string EesToString(){
-        return "";
+    public override string ToString(){
+        return $"{_eesType}:: {_eesTaskType}, {_eesTitle}, {_eesDescription}, {base.EesListToString()}, {_eesPreferedDue}, {_eesDueDate}, {_eesIsComplete} ";
     }
 
     public override void EesRecordEvent()
     {
-        
+        _eesIsComplete = true;
     }
 
-    public abstract string EesDisplayTask();
+    //public over string EesDisplayInPlanner();
 
 
 }

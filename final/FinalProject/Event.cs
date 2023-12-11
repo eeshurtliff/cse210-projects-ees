@@ -20,9 +20,36 @@ abstract class Event{
 
     }
 
+    public string eesGetType(){
+        return _eesType;
+    }
+
+    public abstract DateTime EesGetFirstTime();
+
+    
+   
+    
+
     public abstract void EesRecordEvent();
 
-    public abstract string EesToString();
+    public string EesListToString(){
+        string eesSupplyList = "";
+        foreach (string eesSupply in _eesSupplies){
+            string eesTrimmedSupply = eesSupply.Trim();
+            eesSupplyList += eesTrimmedSupply + "*";
+        }
+        //eesSupplyList += ">";
+        return eesSupplyList;
+    }
+
+    public string EesDateTimeToString(DateTime eesNewDate){
+        return eesNewDate.ToString("MM/dd/yyyy hh:mm tt");
+
+    }
+
+    public abstract string ToString();
+
+    public abstract string EesDisplayInPlanner();
 
 
 
