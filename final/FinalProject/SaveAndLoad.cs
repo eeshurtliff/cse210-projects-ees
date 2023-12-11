@@ -23,14 +23,15 @@ class SaveAndLoad {
 
     }
 
-
+//checks to see if anything is in the file. If not, it saves the planner to the file. If something is in the file, it checks to make sure
+//The data in the file has been loaded before saving. 
     public void EesSaveToFile(Planner eesPlanner){
 
 
         List<string> eesLines = System.IO.File.ReadAllLines(_eesFilename).ToList();
 
         // if (filename.Exists)
-        using (StreamWriter eesOutputFile = new StreamWriter(_eesFilename, true))
+        using (StreamWriter eesOutputFile = new StreamWriter(_eesFilename, false))
         {
             if (eesLines.Count() != 0){
                 //check to see if the data from the file has been loaded. If it has, continue. If not, require the user to load the file first. 
@@ -72,73 +73,78 @@ class SaveAndLoad {
         
         }
     }
-
+//reads all of the lines in the file, then runs through each line to create the event and add it to the planner lists. 
     public void EesLoadPlanner(Planner eesPlanner){
-        string[] eesLines = System.IO.File.ReadAllLines(_eesFilename);
+
+        //If the file has already been loaded, it does not need to be loaded again. 
+        if (_eesIsLoaded == false){
+        
+            string[] eesLines = System.IO.File.ReadAllLines(_eesFilename);
 
 
-        foreach (string eesLine in eesLines)
-        {
-            if (eesLine != "Appointments: " && eesLine != "Tasks: "){
+            foreach (string eesLine in eesLines)
+            {
+                if (eesLine != "Appointments: " && eesLine != "Tasks: "){
 
-                List<string> eesSupplies = new List<string>();
-                string[] eesParts = eesLine.Split("::");
+                    List<string> eesSupplies = new List<string>();
+                    string[] eesParts = eesLine.Split("::");
 
-                string eesType = eesParts[0];
-                string[] eesDescriptors = eesParts[1].Trim().Split(',');
-                string eesSuppliesAsString = eesDescriptors[2];
-                string[] eesSuppliesSplit = eesSuppliesAsString.Trim().Split('*');
-                foreach (string eesSupply in eesSuppliesSplit){
-                    eesSupplies.Add(eesSupply);
-                }
-                
-                string eesTitle = eesDescriptors[0];
-                string eesDescription = eesDescriptors[1];
-
-                if (eesType == "appointment"){
-                    String eesFirstTimeString = eesDescriptors[3];
-                    DateTime eesFirstTime = EesStringToDateTime(eesFirstTimeString);
-
-                    String eesSecondTimeString = eesDescriptors[4];
-                    DateTime eesSecondTime = EesStringToDateTime(eesSecondTimeString);
-
-                    bool eesIsComplete = bool.Parse(eesDescriptors[5]);
-
-                     Appointment eesNewEvent = new Appointment(eesType, eesTitle, eesDescription, eesSupplies, eesFirstTime, eesSecondTime, eesIsComplete);
-                    eesPlanner.EesAddToAppointmentList(eesNewEvent);
-                    eesPlanner.EesAddToFullList(eesNewEvent);  
-
-
+                    string eesType = eesParts[0];
+                    string[] eesDescriptors = eesParts[1].Trim().Split(',');
+                    string eesSuppliesAsString = eesDescriptors[2];
+                    string[] eesSuppliesSplit = eesSuppliesAsString.Trim().Split('*');
+                    foreach (string eesSupply in eesSuppliesSplit){
+                        eesSupplies.Add(eesSupply);
+                    }
                     
-                    
-                }else{
+                    string eesTitle = eesDescriptors[0];
+                    string eesDescription = eesDescriptors[1];
 
-                    bool eesIsComplete = bool.Parse(eesDescriptors[3]);
+                    if (eesType == "appointment"){
+                        String eesFirstTimeString = eesDescriptors[3];
+                        DateTime eesFirstTime = EesStringToDateTime(eesFirstTimeString);
 
-                    String eesFirstTimeString = eesDescriptors[4];
-                    DateTime eesFirstTime = EesStringToDateTime(eesFirstTimeString);
+                        String eesSecondTimeString = eesDescriptors[4];
+                        DateTime eesSecondTime = EesStringToDateTime(eesSecondTimeString);
 
-                    String eesSecondTimeString = eesDescriptors[5];
-                    DateTime eesSecondTime = EesStringToDateTime(eesSecondTimeString);
+                        bool eesIsComplete = bool.Parse(eesDescriptors[5]);
 
-                    string eesTaskType = eesDescriptors[6];
+                        Appointment eesNewEvent = new Appointment(eesType, eesTitle, eesDescription, eesSupplies, eesFirstTime, eesSecondTime, eesIsComplete);
+                        eesPlanner.EesAddToAppointmentList(eesNewEvent);
+                        eesPlanner.EesAddToFullList(eesNewEvent);  
 
-                    if (eesTaskType == "repeat"){
-                        int eesWeeksTotal = int.Parse(eesDescriptors[7]);
-                        int eesWeeksCompleted = int.Parse(eesDescriptors[8]);
 
-                        Repeat eesNewEvent = new Repeat("task",  eesTitle, eesDescription, eesSupplies, eesIsComplete, eesSecondTime, eesFirstTime, eesTaskType, eesWeeksTotal, eesWeeksCompleted);
-                        eesPlanner.EesAddToTaskList(eesNewEvent);
-                        eesPlanner.EesAddToFullList(eesNewEvent);   
+                        
+                        
                     }else{
 
-                        Once eesNewEvent = new Once("task", eesTitle, eesDescription, eesSupplies, eesIsComplete, eesSecondTime, eesFirstTime, eesTaskType);
-                        eesPlanner.EesAddToTaskList(eesNewEvent);
-                        eesPlanner.EesAddToFullList(eesNewEvent);   
+                        bool eesIsComplete = bool.Parse(eesDescriptors[3]);
+
+                        String eesFirstTimeString = eesDescriptors[4];
+                        DateTime eesFirstTime = EesStringToDateTime(eesFirstTimeString);
+
+                        String eesSecondTimeString = eesDescriptors[5];
+                        DateTime eesSecondTime = EesStringToDateTime(eesSecondTimeString);
+
+                        string eesTaskType = eesDescriptors[6];
+
+                        if (eesTaskType == "repeat"){
+                            int eesWeeksTotal = int.Parse(eesDescriptors[7]);
+                            int eesWeeksCompleted = int.Parse(eesDescriptors[8]);
+
+                            Repeat eesNewEvent = new Repeat("task",  eesTitle, eesDescription, eesSupplies, eesIsComplete, eesSecondTime, eesFirstTime, eesTaskType, eesWeeksTotal, eesWeeksCompleted);
+                            eesPlanner.EesAddToTaskList(eesNewEvent);
+                            eesPlanner.EesAddToFullList(eesNewEvent);   
+                        }else{
+
+                            Once eesNewEvent = new Once("task", eesTitle, eesDescription, eesSupplies, eesIsComplete, eesSecondTime, eesFirstTime, eesTaskType);
+                            eesPlanner.EesAddToTaskList(eesNewEvent);
+                            eesPlanner.EesAddToFullList(eesNewEvent);   
+                        }
+
+
+
                     }
-
-
-
                 }
             }
         }
@@ -147,7 +153,7 @@ class SaveAndLoad {
 
 
     private DateTime EesStringToDateTime(string eesNewDate){
-        //12/10/2023 6:00:00 PM
+        //splits up the datetime string and recreates it as a DateTime type
         string[] eesSplitDateTime = eesNewDate.Trim().Split(' ');
         string eesDate = eesSplitDateTime[0];
         string eesTime = eesSplitDateTime[1];
