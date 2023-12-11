@@ -47,7 +47,7 @@ abstract class Event{
 
     }
 
-    public abstract string ToString();
+    public abstract override string ToString();
 
     public abstract string EesDisplayInPlanner();
 
